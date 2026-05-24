@@ -39,3 +39,10 @@ def create_items(item: Item):
      return todoList
     todoList.append(item)
     return todoList
+
+@app.get("/get/todolist/{item_id}")
+def get_items(item_id: int):
+    if(item_id < len(todoList)):
+     return todoList[item_id];
+    else:
+      raise HTTPException( status_code=404, detail=f'listItem {item_id} not found') 
